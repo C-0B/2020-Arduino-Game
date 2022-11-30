@@ -1,0 +1,287 @@
+# INS: Instructions
+
+
+
+When started, the game will display a welcoming screen asking the user to "Press any button". To
+continue, press any of the 5 buttons and release, if multiple are pressed at the same time then the
+game will proceed once all buttons have been released.
+
+
+
+Next the main menu will be displayed which has 3 options:
+
+1. Practice - A one off level which the user can select the difficulty, after a single round it will
+return to the main menu
+
+
+2. Story - A mode that gets more difficult as you progress though the levels, one incorrect reponse
+will end the game and will return to the main menu. High scores in this mode can be saved.
+
+
+
+3. Hi-Score - Will display the current high score with a 3 character reference of the player (press
+
+any button to return to the main menu).
+
+
+
+Use the up and down buttons to switch between the modes, the menu is non-looping eg. going down from
+
+1 will not cycle to option 3. Press and release the select button to choose a mode.
+
+
+
+
+
+Practice:
+
+
+
+Once the practice mode has been selected and after a short wait time (about 1 second), the user will
+
+be asked to select a sequence length from 4 to 16(N), this can be done using the up and down buttons
+
+to increment or decrement the value displayed. The select button can be pressed to proceed. Next the
+
+user can select how many different symbols could appear in the sequence, 2 to 4 (M). This can also
+
+be changed with the up and down buttons and using select to confirm. Then a 3 second count down will
+
+start and the level will be played. A sequence of length N with M possible characters will be
+
+generated and displayed to the user one symbol at a time. The user will then be asked to "Copy the
+
+symbols". The sequence entered by the user will be displayed on the second line of the LCD. To reply
+
+to the sequence use the directional buttons to indicate which symbol you want and then press select
+
+to submit your choice for that position You will then be able to select the symbol for the next
+
+position. Once you have confirmed a symbol for a position you cannot go back and change it. By
+
+default an up arrow will be shown in each position in the reply to start. Once enough symbols have
+
+been entered the game will either say "FAILIURE" with a red backlight, or "SUCCESS" with a green
+
+back light for a short time before returning to the main menu.
+
+
+
+
+
+Story:
+
+
+
+When the story mode is selected before each round is begun a level number will be shown to the user
+
+indicating which level they have just started (starting from 0). The mode will start from a sequence
+
+length of 4, number of symbols 2 and time between characters in the sequence to be 1 second. As
+
+levels progress the time between characters will decrease to half a second, the number of possibles
+
+in the sequence will grow up to 4 and the length of the sequence will grow up to 16.
+
+
+
+The game will get progressively harder as each level is completed. The game gets harder by first
+
+decreasing the amount of time each symbol is shown on the screen for the user to remember, then the
+
+number of possible symbols increased. Once all the possible variations of possible symbols and time 
+
+have been used, the length of the sequence is increased and the number of possibles is set to 2 and
+
+the time between symbols is set back to 1 second.
+
+
+
+This repeats up to sequences of length 16 with 4 possible symbols and half a second between each
+
+symbol is shown. A maximum score can be achieved by reaching level 78. The way the user enters the
+
+symbols to replicate the sequence is the same as the practice mode.
+
+
+
+
+
+High Score:
+
+
+
+When the third option is selected from the menu the LCD will display the current high score and
+
+who got that score. To go back to the menu press and release any button. 
+
+
+
+# MFS: Features of the minimal feature set
+
+
+
+Indicate by deleting YES or NO to the questions below.
+
+If partially implemented, describe this by deleting *YES/NO* and
+
+writing what does work.  Do not adjust any other text in this section.
+
+
+
+* Sequences are displayed on the screen as specified: *YES*
+
+* Backlight flashes (only when correct): *YES*
+
+* Incorrect answer leads to game over: *YES*
+
+* Game supports *N* up to 10: *YES*
+
+* Game supports *M* of size 4: *YES*
+
+* A menu is present: *YES*
+
+* Size of *M* can be changed: *YES*
+
+* *N* can be changed: *YES*
+
+* Message when wrong printed: *YES*
+
+
+
+
+
+# OAF: Optional and additional features
+
+
+
+* Can handle sequences unto a length of 16 (as many symbols can be displayed on a single line)
+
+* Story mode with increasing difficulty, varying time, possible symbols and sequence lengths
+
+* Menu to switch between practice, story and high score
+
+* Have created characters to easily correspond to each up, down, left and right buttons as arrows
+
+* Suitable display for winning and losing. Red backlight flash for incorrect, green backlight flash
+
+for correct
+
+* Can save a high score with access to view it in the from the menu
+
+* Can save a high score with 3 characters. this can be viewed from the menu
+
+
+
+
+
+# TPL: Test plan
+
+
+
+*Button presses will register once a button has been pressed and released, if a button is held down
+the game waits for it to be released before continuing. 
+
+*When any of the three modes are exited the user is returned to the menu. That game remembers which
+mode they were using and displays that mode. Eg. leaving story mode will return you to the menu with
+story mode highlighted in the menu.
+
+Here are the memory locations that are used to store the high score and 3 character reference
+The high score feature may not work properly deepening on what is already stored there on the device 
+you are using.
+
+Memory location 10 is used for storing the high score
+
+Memory location 11 is used for the first character of the user's name
+Memory location 12 is used for the second character of the user's name
+Memory location 13 is used for the third character of the user's name
+
+
+Menu:
+
+1. Press and release any button to begin (no buttons must be pressed to continue)
+2. Observe the menu, 3 options - Practice, Story and Hi-Score
+3. Use Up and down to navigate the menu
+4. Press select to select a mode
+
+
+Practice Mode:
+
+1. Select sequence length by using up and down buttons(4-16 symbol length)
+2. Press select to confirm
+3. Select the number of possible symbols using up and down buttons(2-4 symbols)
+4. Press select to confirm choice
+5. Wait for the count down
+6. A random sequence will be displayed one symbol at a time
+7. The LCD will ask the user to "Copy the symbols"
+8. The sequence the user enters will be shown on the second line of the LCD
+9. To select a symbol press the button corresponding to the symbol you want for that position
+10. Press select to confirm your choice for that position.
+11. Another arrow will be shown on the right of the one you just chose where you can repeat the
+selection process until you have reached the required length of the sequence
+12. Once the last symbol has been entered either a success or failure screen will be displayed
+13. Game will return to the main menu
+
+
+
+
+
+Story:
+
+
+
+1. The Level number will be displayed, starting from 0
+
+2. A Random sequence will be displayed one symbol at a time on the LCD
+
+3. The LCD will ask the user to "Copy the symbols"
+
+4. The sequence the user enters will be shown on the second line of the LCD
+
+5. To select a symbol press the button corresponding to the symbol you want for that position
+
+6. Press select to confirm your choice for that position.
+
+7. Another arrow will be shown on the right of the one you just chose where you can repeat the
+
+selection process until you have reached the required length of the sequence
+
+8. Once the last symbol has been entered either a success or failure screen will be displayed
+
+9 If the entered sequence is correct the next level is started, level number is displayed and the
+
+previous steps are repeated
+
+10. If the entered sequence is incorrect the users score is displayed and asked to press any button
+
+to proceed
+
+11. If the score is higher than the current high score the user is asked to enter a 3 character
+
+reference
+
+    i. Use the up and down buttons to cycle through the alphabet
+
+   ii. Press select to confirm the letter.
+
+  iii. Repeat for the other 2 letters.
+
+   iv. LCD will display that the score has been saved
+
+12. The game will return to the main menu
+
+
+
+
+
+HighScore:
+
+
+
+1. Observe the LCD
+
+2. Current High Score will be displayed on the first line, 3 character reference will be shown on
+
+second line
+
+3. Press and release any button to return to the main menu(all buttons must be released to go back).
